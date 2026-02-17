@@ -9,11 +9,7 @@ onMounted(async () => {
   // Exchange the code for a session
   const { data, error } = await supabase.auth.getSession()
 
-  if (error) {
-    console.error('Error getting session:', error)
-    await router.push('/login')
-    return
-  }
+
 
   if (data?.session) {
     // Successfully authenticated, redirect to home
@@ -21,8 +17,16 @@ onMounted(async () => {
     console.log(data.session)
     console.log('end data.session')
 
-    await navigateTo('/')
+    setTimeout(async () => {
+      await navigateTo('/')
+    }, 2000)
   }
+
+    if (error) {
+      console.error('Error getting session:', error)
+      await router.push('/login')
+      return
+    }
   else {
     // No session found, redirect to login
     await router.push('/login')

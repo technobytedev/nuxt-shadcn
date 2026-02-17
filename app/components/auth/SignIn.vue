@@ -49,7 +49,9 @@ async function onSubmit(event: Event) {
     })
 
     // Redirect to home or dashboard
-    await navigateTo('/')
+    setTimeout(async () => {
+      await navigateTo('/')
+    }, 2000)
   }
   catch (error: any) {
     console.error('Sign in error:', error)

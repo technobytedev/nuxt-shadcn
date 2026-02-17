@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   ],
 
   modules: [
+    '@nuxtjs/supabase', // Add Supabase module
     'shadcn-nuxt',
     '@vueuse/nuxt',
     '@nuxt/eslint',
@@ -26,6 +27,25 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/fonts',
   ],
+
+  // Supabase configuration
+  supabase: {
+    // Disable automatic redirect to allow custom handling
+    redirect: false,
+    redirectOptions: {
+      login: '/login',
+      callback: '/auth/callback',
+      exclude: ['/register', '/forgot-password', '/reset-password'],
+    },
+  },
+
+  // Runtime config for environment variables
+  runtimeConfig: {
+    public: {
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseKey: process.env.SUPABASE_KEY,
+    },
+  },
 
   shadcn: {
     /**

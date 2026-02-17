@@ -2,6 +2,10 @@
 import NumberFlow from '@number-flow/vue'
 import { TrendingDown, TrendingUp, TrendingUpIcon } from 'lucide-vue-next'
 
+definePageMeta({
+  middleware: 'auth'
+})
+
 const dataCard = ref({
   totalRevenue: 0,
   newCustomers: 0,

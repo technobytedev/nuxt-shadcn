@@ -2,6 +2,10 @@
 definePageMeta({
   layout: 'blank',
 })
+function hello() {
+  alert('hello')
+}
+
 </script>
 
 <template>
